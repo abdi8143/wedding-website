@@ -20,7 +20,7 @@
 <footer class="footer"><div class="brand">Forever & Always</div><p>A beautiful memory • A lifetime of love</p></footer>
 <div class="lightbox" id="lightbox" aria-label="Photo viewer"><button class="close" aria-label="Close">×</button><button class="prev" aria-label="Previous photo">‹</button><img id="large" alt="Wedding photograph"><button class="next" aria-label="Next photo">›</button></div>
 <script>
-const photos=Array.from({length:15},(_,i)=>`assets/photo-${String(i+1).padStart(2,'0')}.jpg`);
+const photos=Array.from({length:15},(_,i)=>`photo-${String(i+1).padStart(2,'0')}.jpg`);
 const grid=document.getElementById('grid'),box=document.getElementById('lightbox'),large=document.getElementById('large');let current=0;
 photos.forEach((src,i)=>{const b=document.createElement('button');b.className='photo'+([0,3,7,11,14].includes(i)?' tall':'');b.setAttribute('aria-label',`Open wedding photo ${i+1}`);const im=document.createElement('img');im.src=src;im.alt=`Wedding memory ${i+1}`;im.loading='lazy';b.appendChild(im);b.addEventListener('click',()=>open(i));grid.appendChild(b)});
 function open(i){current=i;large.src=photos[current];box.classList.add('open');document.body.style.overflow='hidden'}function close(){box.classList.remove('open');document.body.style.overflow=''}function move(d){current=(current+d+photos.length)%photos.length;large.src=photos[current]}
